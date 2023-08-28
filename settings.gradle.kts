@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cameras&Doors"
 include(":app")
- 
