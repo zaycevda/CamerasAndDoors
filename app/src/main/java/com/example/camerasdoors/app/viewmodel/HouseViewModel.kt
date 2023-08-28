@@ -11,10 +11,13 @@ import com.example.camerasdoors.app.ui.utils.ScreenState.SuccessScreenState
 import com.example.camerasdoors.domain.model.Camera
 import com.example.camerasdoors.domain.model.Door
 import com.example.camerasdoors.domain.repository.HouseRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HouseViewModel(
+@HiltViewModel
+class HouseViewModel @Inject constructor(
     private val repository: HouseRepository
 ) : ViewModel() {
 
