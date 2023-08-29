@@ -3,17 +3,18 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
     id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.example.camerasdoors"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.camerasdoors"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -54,7 +55,15 @@ android {
 
 dependencies {
 
+    val daggerVersion = "2.47"
+    val hiltVersion = "1.0.0"
     val ktorVersion = "1.6.3"
+
+    // accompanist
+    implementation("com.google.accompanist:accompanist-pager:0.19.0")
+
+    // coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     // compose
     implementation("androidx.activity:activity-compose:1.7.2")
@@ -63,15 +72,16 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material")
+    implementation("androidx.compose.runtime:runtime-livedata")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // dagger — hilt
-    implementation("com.google.dagger:hilt-android:2.47")
-    kapt("com.google.dagger:hilt-compiler:2.47")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android:$daggerVersion")
+    kapt("com.google.dagger:hilt-compiler:$daggerVersion")
+    kapt("androidx.hilt:hilt-compiler:$hiltVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:$hiltVersion")
 
     // json
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")

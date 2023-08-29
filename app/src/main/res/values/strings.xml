@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Cameras&amp;Doors</string>
+    <string name="app_name">Мой дом</string>
+    <string name="living_room">Гостиная</string>
+
+    <!-- content description -->
+    <string name="lock_on">lock on</string>
+    <string name="star_on">star on</string>
+    <string name="stars_on_off">stars on/off</string>
+    <string name="play_button">play button</string>
+    <string name="edit">edit</string>
+    <string name="background_circle">background circle</string>
+    <string name="rec_on">rec on</string>
 </resources>

@@ -21,7 +21,7 @@ data class DoorsResponse(
 @Serializable
 data class DoorModel(
     val name: String,
-    val snapshot: String?,
+    val snapshot: String? = null,
     val room: String?,
     val id: Long,
     val favorites: Boolean

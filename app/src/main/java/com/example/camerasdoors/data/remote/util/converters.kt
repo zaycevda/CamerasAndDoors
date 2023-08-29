@@ -1,4 +1,4 @@
-package com.example.camerasdoors.data.remote.utils
+package com.example.camerasdoors.data.remote.util
 
 import com.example.camerasdoors.data.remote.dto.CameraModel
 import com.example.camerasdoors.data.remote.dto.DoorModel

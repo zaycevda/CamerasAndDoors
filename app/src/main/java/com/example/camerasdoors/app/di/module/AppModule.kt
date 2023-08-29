@@ -10,14 +10,11 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Provides
-    @Singleton
     fun provideHouseRepository(): HouseRepository =
         HouseRepositoryImpl(
             client = HttpClient(Android) {

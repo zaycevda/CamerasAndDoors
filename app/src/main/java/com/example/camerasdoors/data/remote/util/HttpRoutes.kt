@@ -1,4 +1,4 @@
-package com.example.camerasdoors.data.remote.utils
+package com.example.camerasdoors.data.remote.util
 
 object HttpRoutes {
     private const val BASE_URL = "http://cars.cprogroup.ru"
