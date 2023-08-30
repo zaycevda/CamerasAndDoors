@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("io.realm.kotlin")
     id("org.jetbrains.kotlin.plugin.serialization")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
@@ -98,6 +99,9 @@ dependencies {
 
     // logback
     implementation("ch.qos.logback:logback-classic:1.2.3")
+
+    // realm
+    implementation ("io.realm.kotlin:library-base:1.10.0")
 
     // test
     testImplementation("junit:junit:4.13.2")

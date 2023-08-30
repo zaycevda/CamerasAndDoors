@@ -46,13 +46,12 @@ fun HouseScreen() {
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
 
-    var refreshCount by remember { mutableStateOf(value = 1) }
     val pullRefreshState = rememberPullRefreshState(
-        refreshing = refreshing ?: true,
-        onRefresh = { refreshCount++ }
+        refreshing = refreshing ?: false,
+        onRefresh = { viewModel.refresh() }
     )
 
-    LaunchedEffect(key1 = refreshCount) {
+    LaunchedEffect(key1 = Unit) {
         viewModel.getCameras()
         viewModel.getDoors()
     }

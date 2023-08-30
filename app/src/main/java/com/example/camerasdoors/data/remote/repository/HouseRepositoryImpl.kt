@@ -1,6 +1,5 @@
 package com.example.camerasdoors.data.remote.repository
 
-import android.util.Log
 import com.example.camerasdoors.data.remote.dto.CamerasResponse
 import com.example.camerasdoors.data.remote.dto.DoorsResponse
 import com.example.camerasdoors.data.remote.util.HttpRoutes
@@ -12,8 +11,9 @@ import com.example.camerasdoors.domain.repository.HouseRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.url
+import javax.inject.Inject
 
-class HouseRepositoryImpl(
+class HouseRepositoryImpl @Inject constructor(
     private val client: HttpClient
 ) : HouseRepository {
     override suspend fun getCameras(): List<Camera> {
@@ -21,7 +21,6 @@ class HouseRepositoryImpl(
             try {
                 client.get { url(urlString = HttpRoutes.CAMERAS) }
             } catch (e: Exception) {
-                Log.e(LOG, "getCameras error: ${e.message}")
                 CamerasResponse.empty()
             }
 
@@ -34,15 +33,10 @@ class HouseRepositoryImpl(
             try {
                 client.get { url(urlString = HttpRoutes.DOORS) }
             } catch (e: Exception) {
-                Log.e(LOG, "getDoors error: ${e.message}")
                 DoorsResponse.empty()
             }
 
         val doorModels = doorsResponse.doorModels
         return doorModels.map { doorModel -> doorModel.toDoor() }
-    }
-
-    private companion object {
-        private const val LOG = "HouseRepositoryImplLog"
     }
 }

@@ -114,7 +114,7 @@ fun CameraItem(camera: Camera) {
                 if (camera.rec)
                     Image(
                         painter = painterResource(id = R.drawable.ic_rec),
-                        contentDescription = stringResource(R.string.rec_on),
+                        contentDescription = stringResource(id = R.string.rec_on),
                         modifier = Modifier
                             .align(alignment = Alignment.TopStart)
                             .padding(all = 8.dp)
@@ -133,6 +133,15 @@ fun CameraItem(camera: Camera) {
                     fontWeight = FontWeight(weight = 400),
                     fontFamily = CirceRegular,
                     lineHeight = 25.06.sp
+                )
+                Image(
+                    painter = painterResource(R.drawable.ic_guardoff),
+                    contentDescription = stringResource(R.string.guard_off),
+                    modifier = Modifier
+                        .align(alignment = Alignment.CenterEnd)
+                        .padding(
+                            end = 28.dp
+                        )
                 )
             }
         }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Мой дом</string>
     <string name="living_room">Гостиная</string>
+    <string name="edit_title">Редактирование</string>
+    <string name="title">Название</string>
 
     <!-- content description -->
     <string name="lock_on">lock on</string>
@@ -10,4 +12,5 @@
     <string name="edit">edit</string>
     <string name="background_circle">background circle</string>
     <string name="rec_on">rec on</string>
+    <string name="guard_off">guard off</string>
 </resources>

@@ -29,21 +29,26 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.example.camerasdoors.R
 import com.example.camerasdoors.app.ui.theme.CirceRegular
 import com.example.camerasdoors.app.ui.theme.Grey80
 import com.example.camerasdoors.app.ui.theme.Grey90
+import com.example.camerasdoors.app.viewmodel.HouseViewModel
 import com.example.camerasdoors.domain.model.Door
 
 @Composable
 fun DoorItem(door: Door) {
+    val viewModel = hiltViewModel<HouseViewModel>()
     var isShifted by remember { mutableStateOf(value = false) }
     val targetValue = if (isShifted) (-90).dp else 0.dp
     val offset = animateDpAsState(
         targetValue = targetValue,
         label = ""
     ).value
+
+    var openDialog by remember { mutableStateOf(value = false) }
 
     Box {
         Box(
@@ -57,7 +62,7 @@ fun DoorItem(door: Door) {
             )
             Image(
                 painter = painterResource(id = if (door.favorites) R.drawable.ic_staron else R.drawable.ic_staroff),
-                contentDescription = stringResource(R.string.stars_on_off),
+                contentDescription = stringResource(id = R.string.stars_on_off),
                 modifier = Modifier.align(alignment = Alignment.Center)
             )
         }
@@ -65,14 +70,15 @@ fun DoorItem(door: Door) {
             modifier = Modifier
                 .padding(end = 66.dp)
                 .align(alignment = Alignment.CenterEnd)
+                .clickable { openDialog = true }
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_bg_circle),
-                contentDescription = stringResource(R.string.background_circle)
+                contentDescription = stringResource(id = R.string.background_circle)
             )
             Image(
                 painter = painterResource(id = R.drawable.ic_edit),
-                contentDescription = stringResource(R.string.edit),
+                contentDescription = stringResource(id = R.string.edit),
                 modifier = Modifier.align(alignment = Alignment.Center)
             )
         }
@@ -118,7 +124,7 @@ fun DoorItem(door: Door) {
                     )
                     Image(
                         painter = painterResource(id = R.drawable.ic_play_button),
-                        contentDescription = stringResource(R.string.play_button),
+                        contentDescription = stringResource(id = R.string.play_button),
                         modifier = Modifier.align(alignment = Alignment.Center)
                     )
                     if (door.favorites)
@@ -156,5 +162,21 @@ fun DoorItem(door: Door) {
                 )
             }
         }
+        if (openDialog)
+            EditDialog(
+                onDismiss = { openDialog = false },
+                onConfirm = { name ->
+                    viewModel.updateDoor(
+                        Door(
+                            name = name,
+                            snapshot = door.snapshot,
+                            room = door.room,
+                            id = door.id,
+                            favorites = door.favorites
+                        )
+                    )
+                    openDialog = false
+                }
+            )
     }
 }
