@@ -55,10 +55,9 @@ android {
 }
 
 dependencies {
-
     val daggerVersion = "2.47"
     val hiltVersion = "1.0.0"
-    val ktorVersion = "1.6.3"
+    val ktorVersion = "2.3.4"
 
     // accompanist
     implementation("com.google.accompanist:accompanist-pager:0.19.0")
@@ -84,24 +83,20 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:$hiltVersion")
     implementation("androidx.hilt:hilt-navigation-compose:$hiltVersion")
 
-    // json
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
-
     // ktx
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
     // ktor
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
     implementation("io.ktor:ktor-client-android:$ktorVersion")
-    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-    implementation("io.ktor:ktor-client-logging:$ktorVersion")
+    implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
 
     // logback
     implementation("ch.qos.logback:logback-classic:1.2.3")
 
     // realm
-    implementation ("io.realm.kotlin:library-base:1.10.0")
+    implementation("io.realm.kotlin:library-base:1.10.0")
 
     // test
     testImplementation("junit:junit:4.13.2")
